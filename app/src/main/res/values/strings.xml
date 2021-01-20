@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Kotlin Login</string>
+    <string name="login_action_text">Login</string>
+    <string name="login_placeholder_pass">Password</string>
+    <string name="login_placeholder_username">Username</string>
+    <string name="login_placeholder_confirm_pass">Confirm password</string>
+</resources>

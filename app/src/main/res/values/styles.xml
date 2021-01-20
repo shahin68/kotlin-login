@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="EditTextStyle" parent="Widget.AppCompat.Light.AutoCompleteTextView">
+        <item name="android:textColor">?attr/colorPrimaryDark</item>
+        <item name="android:textColorHint">@android:color/darker_gray</item>
+        <item name="android:textSize">@dimen/generic_text_size</item>
+        <item name="android:imeOptions">actionDone</item>
+        <item name="android:inputType">text</item>
+    </style>
+
+    <style name="ButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:backgroundTint" tools:targetApi="lollipop">@color/button_color</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+</resources>
