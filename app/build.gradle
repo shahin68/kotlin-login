@@ -47,7 +47,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
 
-    // unit test
+    // local unit test
     testImplementation 'junit:junit:4.13.1'
     testImplementation 'com.google.truth:truth:1.1'
 

@@ -1,4 +1,4 @@
-package com.shahin.login.ui.fragments.login
+package com.shahin.login.data.sources
 
 import com.google.common.truth.Truth
 import com.google.common.truth.Truth.assertThat
@@ -6,12 +6,12 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 
-class LoginFragmentTest {
-    private lateinit var loginFragment: LoginFragment
+class RepositoryImplTest {
+    private lateinit var repositoryImpl: RepositoryImpl
 
     @Before
     fun start() {
-        loginFragment = LoginFragment()
+        repositoryImpl = RepositoryImpl()
     }
 
     @After
@@ -22,28 +22,28 @@ class LoginFragmentTest {
 
     @Test
     fun validInputs_isTrue() {
-        val result = loginFragment.checkInputs("john", "1234", "1234")
-        Truth.assertThat(result).isTrue()
+        val result = repositoryImpl.verify("john", "1234", "1234")
+        assertThat(result).isTrue()
     }
 
     @Test
     fun invalidInputs_emptyUsername_isFalse() {
-        val result = loginFragment.checkInputs("", "1234", "1234")
-        Truth.assertThat(result).isFalse()
+        val result = repositoryImpl.verify("", "1234", "1234")
+        assertThat(result).isFalse()
     }
 
     @Test
     fun invalidInputs_passwordNotMatching_isFalse() {
         val pass = "1234"
         val passConfirmation = "123"
-        val result = loginFragment.checkInputs("john", pass, passConfirmation)
+        val result = repositoryImpl.verify("john", pass, passConfirmation)
         Truth.assertThat(result || pass.equals(passConfirmation, false)).isFalse()
     }
 
     @Test
     fun invalidInputs_emptyPasswordField_isFalse() {
-        val result1 = loginFragment.checkInputs("john", "123", "")
-        val result2 = loginFragment.checkInputs("john", "", "123")
+        val result1 = repositoryImpl.verify("john", "123", "")
+        val result2 = repositoryImpl.verify("john", "", "123")
         Truth.assertThat(result1 || result2).isFalse()
     }
 }

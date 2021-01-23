@@ -48,9 +48,17 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                 it.toString()
             )
         }
+
+        binding.btn.setOnClickListener {
+            viewModel.verifyInputs(
+                binding.tietUsername.text.toString(),
+                binding.tietPass.text.toString(),
+                binding.tietPassConfirm.text.toString()
+            )
+        }
     }
 
-    fun validateInputs(
+    fun checkInputs(
         username: String,
         password: String,
         passwordConfirmation: String
@@ -66,6 +74,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         password: String,
         passwordConfirmation: String
     ) {
-        binding.btn.isEnabled = validateInputs(username, password, passwordConfirmation)
+        binding.btn.isEnabled = checkInputs(username, password, passwordConfirmation)
     }
 }
