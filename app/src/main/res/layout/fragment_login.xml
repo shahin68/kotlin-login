@@ -8,79 +8,56 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_username"
+        style="@style/TextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/generic_size_24dp"
         android:layout_marginVertical="@dimen/generic_size_24dp"
-        app:boxBackgroundColor="@color/white"
-        app:boxBackgroundMode="outline"
-        app:boxCornerRadiusBottomEnd="4dp"
-        app:boxCornerRadiusTopEnd="4dp"
-        app:boxCornerRadiusTopStart="4dp"
-        app:boxStrokeColor="@color/purple_700"
-        app:boxStrokeErrorColor="@color/design_default_color_error"
-        app:boxStrokeWidth="1dp"
-        app:boxStrokeWidthFocused="2dp"
+        android:hint="@string/login_placeholder_username"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tiet_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/login_placeholder_username"
             android:imeOptions="actionNext"
-            android:inputType="textEmailAddress"
-            android:nextFocusDown="@id/tiet_pass" />
+            android:inputType="text"
+            android:nextFocusForward="@id/tiet_pass" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_pass"
+        style="@style/TextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/generic_size_24dp"
         android:layout_marginVertical="@dimen/generic_size_24dp"
-        app:boxBackgroundColor="@color/white"
-        app:boxBackgroundMode="outline"
-        app:boxCornerRadiusBottomEnd="4dp"
-        app:boxCornerRadiusTopEnd="4dp"
-        app:boxCornerRadiusTopStart="4dp"
-        app:boxStrokeColor="@color/purple_700"
-        app:boxStrokeErrorColor="@color/design_default_color_error"
-        app:boxStrokeWidth="1dp"
-        app:boxStrokeWidthFocused="2dp"
+        android:hint="@string/login_placeholder_pass"
         app:layout_constraintTop_toBottomOf="@+id/til_username">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tiet_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/login_placeholder_pass"
-            android:imeOptions="actionDone"
-            android:inputType="textPassword" />
+            android:imeOptions="actionNext"
+            android:inputType="textPassword"
+            android:nextFocusForward="@id/tiet_pass_confirm"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_pass_confirm"
+        style="@style/TextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/generic_size_24dp"
         android:layout_marginVertical="@dimen/generic_size_24dp"
-        app:boxBackgroundColor="@color/white"
-        app:boxBackgroundMode="outline"
-        app:boxCornerRadiusBottomEnd="4dp"
-        app:boxCornerRadiusTopEnd="4dp"
-        app:boxCornerRadiusTopStart="4dp"
-        app:boxStrokeColor="@color/purple_700"
-        app:boxStrokeErrorColor="@color/design_default_color_error"
-        app:boxStrokeWidth="1dp"
-        app:boxStrokeWidthFocused="2dp"
+        android:hint="@string/login_placeholder_confirm_pass"
         app:layout_constraintTop_toBottomOf="@+id/til_pass">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tiet_pass_confirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/login_placeholder_confirm_pass"
             android:imeOptions="actionDone"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -88,10 +65,10 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn"
         android:layout_width="match_parent"
-        android:enabled="false"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/generic_size_24dp"
         android:layout_marginBottom="@dimen/generic_size_24dp"
+        android:enabled="false"
         android:text="@string/login_action_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_pass_confirm"
