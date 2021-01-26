@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.shahin.login.databinding.FragmentLoginBinding
+import com.shahin.login.extensions.simpleInputWatcher
 import com.shahin.login.ui.fragments.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -24,5 +25,55 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.tietUsername.simpleInputWatcher {
+            validate(
+                it.toString(),
+                binding.tietPass.text.toString(),
+                binding.tietPassConfirm.text.toString()
+            )
+        }
+
+        binding.tietPass.simpleInputWatcher {
+            validate(
+                binding.tietUsername.text.toString(),
+                it.toString(),
+                binding.tietPassConfirm.text.toString()
+            )
+        }
+
+        binding.tietPassConfirm.simpleInputWatcher {
+            validate(
+                binding.tietUsername.text.toString(),
+                binding.tietPass.text.toString(),
+                it.toString()
+            )
+        }
+
+        binding.btn.setOnClickListener {
+            viewModel.verifyInputs(
+                binding.tietUsername.text.toString(),
+                binding.tietPass.text.toString(),
+                binding.tietPassConfirm.text.toString()
+            )
+        }
+    }
+
+    fun checkInputs(
+        username: String,
+        password: String,
+        passwordConfirmation: String
+    ): Boolean {
+        if (username.isEmpty() || password.isEmpty() || passwordConfirmation.isEmpty() || !passwordConfirmation.equals(password, false)) {
+            return false
+        }
+        return true
+    }
+
+    private fun validate(
+        username: String,
+        password: String,
+        passwordConfirmation: String
+    ) {
+        binding.btn.isEnabled = checkInputs(username, password, passwordConfirmation)
     }
 }
