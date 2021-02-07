@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.shahin.login.databinding.FragmentLoginBinding
 import com.shahin.login.extensions.simpleInputWatcher
 import com.shahin.login.ui.fragments.BaseFragment
@@ -50,11 +51,16 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         }
 
         binding.btn.setOnClickListener {
-            viewModel.verifyInputs(
+            val result = viewModel.verifyInputs(
                 binding.tietUsername.text.toString(),
                 binding.tietPass.text.toString(),
                 binding.tietPassConfirm.text.toString()
             )
+            Toast.makeText(
+                requireContext(),
+                result.toString(),
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
