@@ -6,7 +6,7 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 
-class RepositoryImplTest {
+class RepositoryImplTest: Repository {
     private lateinit var repositoryImpl: RepositoryImpl
 
     @Before
@@ -45,5 +45,12 @@ class RepositoryImplTest {
         val result1 = repositoryImpl.verify("john", "123", "")
         val result2 = repositoryImpl.verify("john", "", "123")
         Truth.assertThat(result1 || result2).isFalse()
+    }
+
+    override fun verify(username: String, password: String, passwordConfirmation: String): Boolean {
+        if (username.isEmpty() || password.isEmpty() || passwordConfirmation.isEmpty() || !passwordConfirmation.equals(password, false)) {
+            return false
+        }
+        return true
     }
 }
