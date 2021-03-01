@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.shahin.login.databinding.FragmentLoginBinding
 import com.shahin.login.extensions.simpleInputWatcher
 import com.shahin.login.ui.fragments.BaseFragment
@@ -56,11 +57,14 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                 binding.tietPass.text.toString(),
                 binding.tietPassConfirm.text.toString()
             )
-            Toast.makeText(
-                requireContext(),
-                result.toString(),
-                Toast.LENGTH_SHORT
-            ).show()
+            when (result) {
+               true -> {
+                   findNavController().navigate(
+                       LoginFragmentDirections.actionFragmentLoginToFragmentMain()
+                   )
+               }
+               false -> {}
+            }
         }
     }
 

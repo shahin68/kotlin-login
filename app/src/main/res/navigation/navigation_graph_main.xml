@@ -10,5 +10,15 @@
         android:name="com.shahin.login.ui.fragments.login.LoginFragment"
         android:label="Login"
         tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_fragment_login_to_fragment_main"
+            app:destination="@id/fragment_main" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_main"
+        android:name="com.shahin.login.ui.fragments.main.MainFragment"
+        android:label="Main"
+        tools:layout="@layout/fragment_main" >
     </fragment>
 </navigation>
